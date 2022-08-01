@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+class ksztalt
+{
+public:
+    virtual void oblicz_pole () = 0;
+    //funkcja wirtualna
+};
+
+class kolo :public ksztalt
+{
+    float r;
+public:
+    kolo(float x)
+    {
+        x = r;
+    }
+    virtual void oblicz_pole()
+    {
+        cout << "pole kola wynosi: " << 3.14 * r * r << endl;
+   }
+};
+
+class kwadrat :public ksztalt
+{
+    float a;
+public:
+    kwadrat(float x)
+    {
+        a=x;
+    }
+    virtual void oblicz_pole()
+    {
+        cout << "pole kwadratu wynosi: " << a * a << endl;
+    }
+};
+
+void obliczenia(ksztalt* x)
+{
+    x->oblicz_pole();
+}
+int main()
+{
+    kolo k(1);
+    kwadrat kw(4);
+
+    ksztalt* wsk;
+    wsk = &kw;
+
+    wsk->oblicz_pole();
+
+    wsk = &k;
+    wsk->oblicz_pole();
+
+    obliczenia(wsk);
+}
