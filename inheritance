@@ -1,0 +1,76 @@
+#include <iostream>
+#include<math.h>
+#include<cmath>
+
+using namespace std;
+
+class punkt
+{
+    float x, y;
+    string nazwa;
+
+public:
+
+    void wystwietl()
+    {
+        cout << "nazwa punkt to: " << nazwa << " ,o wspoldrzednych: " << x << " , " << y << endl;
+    }
+    punkt(string n = "s", float a = 0, float b = 0)
+    {
+        nazwa = n;
+        x = a;
+        y = b;
+
+    }
+};
+
+class kolo :public punkt
+{
+protected:float r;
+    string nazwa;
+
+public:
+
+    void wyswietl()
+    {
+        cout << "kolo o nazwie" << nazwa << endl;
+        cout << "srodek kola to " << endl;
+        punkt::wystwietl();
+        cout << "promien wynosi " << r << endl;
+        cout << "pole kola wynosi" << 3.14 * r * r << endl;
+    }
+
+    kolo(string nk="koko", string np="s", float a=0, float b=0, float pr=2)
+        :punkt(np,a,b)
+    {
+        nazwa = nk;
+        r = pr;
+    }
+};
+
+class kula:public kolo
+{
+    string nazwa;
+
+public:
+
+    void wyswietl()
+    {
+        cout << "kolo o nazwie " << nazwa << endl;
+        cout << "srodek kola to " << endl;
+        kolo::wystwietl();
+        cout << "promien wynosi " << r << endl;
+        cout << "objetosc kola wynosi: " << 4/3*3.14*r*r*r << endl;
+    }
+    kula(string nk = "koko", string np = "s", float a = 0, float b = 0, float pr = 2)
+        :kolo(nk,np,a,b,pr)
+    {
+    
+    }
+};
+
+int main()
+{
+    class kula k1;
+    k1.wyswietl();
+}
